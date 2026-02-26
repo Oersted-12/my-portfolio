@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Management System | Christian Oersted</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --grocery-cyan: #00f2ff;
+            --grocery-purple: #bc13fe;
+            --grocery-gradient: linear-gradient(135deg, var(--grocery-cyan), var(--grocery-purple));
+        }
+
+        .grocery-visual {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .grocery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            border: 1px solid rgba(0, 242, 255, 0.1);
+        }
+
+        .terminal-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--grocery-teal);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'monospace';
+            font-size: 0.9rem;
+            color: var(--grocery-cyan);
+            box-shadow: inset 0 0 20px rgba(0, 128, 128, 0.1);
+        }
+
+        .node-line {
+            height: 2px;
+            background: var(--grocery-cyan);
+            position: relative;
+            margin: 1rem 0;
+            opacity: 0.3;
+        }
+
+        .node-circle {
+            width: 10px;
+            height: 10px;
+            background: var(--grocery-cyan);
+            border-radius: 50%;
+            position: absolute;
+            top: -4px;
+            box-shadow: 0 0 10px var(--grocery-cyan);
+        }
+
+        .detail-h2 {
+            background: var(--grocery-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .grocery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="stars-container"></div>
+
+    <a href="index.html#projects" class="back-btn">
+        <i data-lucide="arrow-left"></i> Back to Portfolio
+    </a>
+
+    <header class="project-detail-hero">
+        <div class="hero-image-container">
+            <img src="assets/Grocery Management_1.png" alt="Grocery Management">
+            <div class="hero-overlay"></div>
+        </div>
+        <canvas id="network-canvas"></canvas>
+    </header>
+
+    <main class="content-wrap">
+
+        <div class="grocery-grid">
+            <div class="glass-card">
+                <h2 class="detail-h2">The Architecture</h2>
+                <p>This university group project focused on building a grocery management solution to organize products,
+                    manage inventory, and streamline basic operations. The project emphasized structured data handling,
+                    usability, and efficient workflows to improve accuracy and reduce manual effort.</p>
+
+                <div style="margin-top: 2.5rem;">
+                    <h3 style="color: var(--grocery-cyan); margin-bottom: 2rem;">Core Functional Modules</h3>
+                    <ul
+                        style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; justify-items: start;">
+                        <li
+                            style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-dim); text-align: left; width: 100%;">
+                            <i data-lucide="users" style="color: var(--grocery-teal);"></i> User Admin Panel
+                        </li>
+                        <li
+                            style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-dim); text-align: left; width: 100%;">
+                            <i data-lucide="package" style="color: var(--grocery-teal);"></i> Inventory Matrix
+                        </li>
+                        <li
+                            style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-dim); text-align: left; width: 100%;">
+                            <i data-lucide="clipboard-list" style="color: var(--grocery-teal);"></i> Order Tracking
+                        </li>
+                        <li
+                            style="display: flex; align-items: center; gap: 0.8rem; color: var(--text-dim); text-align: left; width: 100%;">
+                            <i data-lucide="alert-triangle" style="color: var(--grocery-teal);"></i> Stock Alerts
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Christian Oersted Dominic Jeeva. All rights reserved.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Add star movement
+        const starsContainer = document.querySelector('.stars-container');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Network Effect Script
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxPoints = 40; // Fewer points for detail pages
+        const connectionDistance = 150;
+
+        function resize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+
+        class Point {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+
+        function initNetwork() {
+            resize();
+            points = [];
+            for (let i = 0; i < maxPoints; i++) points.push(new Point());
+        }
+
+        function animateNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < points.length; i++) {
+                let p1 = points[i];
+                p1.update();
+                ctx.beginPath();
+                ctx.arc(p1.x, p1.y, 1, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fill();
+
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                    if (dist < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        let opacity = 1 - dist / connectionDistance;
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${opacity * 0.2})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateNetwork);
+        }
+
+        window.addEventListener('resize', resize);
+        initNetwork();
+        animateNetwork();
+
+        // Parallax effect for floating orb
+        window.addEventListener('mousemove', (e) => {
+            const orb = document.querySelector('.floating-orb');
+            const x = (window.innerWidth / 2 - e.pageX) / 25;
+            const y = (window.innerHeight / 2 - e.pageY) / 25;
+            if (orb) orb.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
+
+</html>

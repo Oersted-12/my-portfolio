@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental System | Christian Oersted</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --car-cyan: #00f2ff;
+            --car-purple: #bc13fe;
+            --car-gradient: linear-gradient(135deg, var(--car-cyan), var(--car-purple));
+        }
+
+        .car-visual {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .rental-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .feature-list i {
+            color: var(--car-purple);
+            margin-top: 0.2rem;
+        }
+
+        .vision-card {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .detail-h2 {
+            background: var(--car-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .neon-purple-text {
+            color: var(--car-purple);
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .rental-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="stars-container"></div>
+
+    <a href="index.html#projects" class="back-btn">
+        <i data-lucide="arrow-left"></i> Back to Portfolio
+    </a>
+
+    <header class="project-detail-hero">
+        <div class="hero-image-container">
+            <img src="assets/Vehicle Rental System_1.png" alt="Vehicle Rental System">
+            <div class="hero-overlay"></div>
+        </div>
+        <canvas id="network-canvas"></canvas>
+    </header>
+
+    <main class="content-wrap">
+
+        <div class="vision-card glass-card">
+            <h2 class="detail-h2">The Vision</h2>
+            <p>This group project focused on analyzing vehicle-related systems using technology-driven approaches. It
+                highlighted system design, problem-solving, and the application of engineering and software concepts to
+                real-world transportation scenarios.</p>
+
+            <ul class="feature-list">
+                <li><i data-lucide="shield-check"></i> <strong>Secure RBAC:</strong> Role-Based Access Control for
+                    Customers, Staff, and Administrators.</li>
+                <li><i data-lucide="key"></i> <strong>Digital Key Integration:</strong> Concept interface for secure
+                    vehicle access and monitoring.</li>
+                <li><i data-lucide="calendar"></i> <strong>Dynamic Booking:</strong> Real-time availability
+                    management and automated rental scheduling.</li>
+                <li><i data-lucide="layout-dashboard"></i> <strong>Admin Intelligence:</strong> Comprehensive
+                    analytics dashboard for fleet management.</li>
+            </ul>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Christian Oersted Dominic Jeeva. All rights reserved.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Add star movement
+        const starsContainer = document.querySelector('.stars-container');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Network Effect Script
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxPoints = 40; // Fewer points for detail pages
+        const connectionDistance = 150;
+
+        function resize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+
+        class Point {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+
+        function initNetwork() {
+            resize();
+            points = [];
+            for (let i = 0; i < maxPoints; i++) points.push(new Point());
+        }
+
+        function animateNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < points.length; i++) {
+                let p1 = points[i];
+                p1.update();
+                ctx.beginPath();
+                ctx.arc(p1.x, p1.y, 1, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fill();
+
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                    if (dist < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        let opacity = 1 - dist / connectionDistance;
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${opacity * 0.2})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateNetwork);
+        }
+
+        window.addEventListener('resize', resize);
+        initNetwork();
+        animateNetwork();
+
+        // Parallax effect for floating orb
+        window.addEventListener('mousemove', (e) => {
+            const orb = document.querySelector('.floating-orb');
+            const x = (window.innerWidth / 2 - e.pageX) / 25;
+            const y = (window.innerHeight / 2 - e.pageY) / 25;
+            if (orb) orb.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
+
+</html>

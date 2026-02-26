@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <meta name="description"
+        content="A futuristic, antigravity-themed personal portfolio showcasing my projects and skills.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="stars-container"></div>
+
+    <nav id="navbar">
+
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <canvas id="network-canvas"></canvas>
+            <div class="hero-content">
+                <p class="welcome-text">WELCOME TO MY PORTFOLIO</p>
+                <div class="profile-container">
+                    <img src="assets/profile.png" alt="Christian Oersted" class="profile-img">
+                </div>
+                <h1 class="glitch-text"><span class="accent">CHRISTIAN OERSTED</span></h1>
+                <h1 class="glitch-text"><span class="accent">DOMINIC JEEVA</span></h1>
+                <div class="hero-socials">
+                    <a href="https://www.linkedin.com/in/christian-oersted-d-j-8294a5368?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                        target="_blank">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                    <a href="mailto:christianoersted1112@gmail.com">
+                        <i data-lucide="mail"></i>
+                    </a>
+                    <a href="tel:0752996187">
+                        <i data-lucide="phone"></i>
+                    </a>
+                </div>
+                <p class="tagline">Data Science Undergraduate @ SLIIT | Crafting intelligent systems that defy gravity.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn primary">View Projects</a>
+                    <a href="#contact" class="btn secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="floating-orb"></div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="glass-card about-card">
+                    <h2>About Me</h2>
+                    <p>I sudied at <strong>St.Partick's College</strong>. Now I am a <strong>Data Science</strong>
+                        undergraduate (Year 2, Semester 2) at <strong>SLIIT</strong> with a strong foundation in
+                        <strong> Python, Java, JavaScript, SQL, and Machine Learning</strong>.
+                        Experienced in building academic projects involving AI models, web applications, and IoT
+                        systems. Passionate about data-driven decision-making, artificial intelligence, and software
+                        development, with a continuous learning mindset and adaptability to <strong>remote and hybrid
+                            work environments</strong>.
+                    </p>
+                    <div class="bio-meta">
+                        <span><i data-lucide="languages"></i> Tamil & English</span>
+                        <span><i data-lucide="map-pin"></i> Jaffna / Colombo</span>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-badge"><i data-lucide="database"></i> Database & ML</div>
+                    <div class="skill-badge"><i data-lucide="terminal"></i> Python / Java / JavaScript / C /C++</div>
+                    <div class="skill-badge"><i data-lucide="server"></i> Spring Boot</div>
+                    <div class="skill-badge"><i data-lucide="layout"></i> Frontend (HTML/CSS)</div>
+                    <div class="skill-badge"><i data-lucide="git-branch"></i> OOP Principles</div>
+                    <div class="skill-badge"><i data-lucide="cpu"></i> IoT & Arduino</div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 5rem;">Soft Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-badge"><i data-lucide="brain"></i> Analytical Thinking</div>
+                    <div class="skill-badge"><i data-lucide="lightbulb"></i> Problem-Solving</div>
+                    <div class="skill-badge"><i data-lucide="search"></i> Critical Thinking</div>
+                    <div class="skill-badge"><i data-lucide="target"></i> Attention to Detail</div>
+                    <div class="skill-badge"><i data-lucide="bar-chart-3"></i> Data-Driven Decision Making</div>
+                    <div class="skill-badge"><i data-lucide="message-square"></i> Communication</div>
+                    <div class="skill-badge"><i data-lucide="users"></i> Team Collaboration</div>
+                    <div class="skill-badge"><i data-lucide="clock"></i> Time Management</div>
+                    <div class="skill-badge"><i data-lucide="refresh-cw"></i> Adaptability</div>
+                    <div class="skill-badge"><i data-lucide="book-open"></i> Research & Curiosity</div>
+                    <div class="skill-badge"><i data-lucide="palette"></i> Creativity</div>
+                    <div class="skill-badge"><i data-lucide="zap"></i> Self-Motivation</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/Grocery Management.jpg" alt="Grocery Management" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Java • Spring Boot</span>
+                            <h3>Grocery Management</h3>
+                            <p>Developed a grocery ordering system applying OOP principles and file-based data CRUD
+                                operations.</p>
+                            <a href="grocery-project.html" class="project-link">Learn More <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/Vehicle Rental System.jpg" alt="Vehicle Rental System" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Spring Boot • RBAC</span>
+                            <h3>Vehicle Rental System</h3>
+                            <p>Web-based system with user authentication and secure Role-Based Access Control.</p>
+                            <a href="vehicle-project.html" class="project-link">Learn More <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/Meal Planner AI.jpg" alt="Meal Planner AI" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Python • Machine Learning</span>
+                            <h3>Meal Planner AI</h3>
+                            <p>AI-driven recommendation system for personalized meal plans. Built on Google Colab.</p>
+                            <a href="meal-project.html" class="project-link">Learn More <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/IoT Home Automation.jpg" alt="IoT Home Automation" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">C++ • Arduino</span>
+                            <h3>IoT Home Automation</h3>
+                            <p>Smart home prototype with motion sensors, automated alerts, and LCD monitoring.</p>
+                            <a href="iot-project.html" class="project-link">Learn More <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="glass-card contact-card">
+                    <h2>Connect With Me</h2>
+                    <p>Have a project in mind? Let's build something extraordinary.</p>
+                    <div class="contact-links" style="margin-bottom: 2rem;">
+                        <a href="mailto:christianoersted1112@gmail.com" class="contact-link-item">
+                            <i data-lucide="mail"></i> Email Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/christian-oersted-d-j-8294a5368?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                            target="_blank" class="contact-link-item">
+                            <i data-lucide="linkedin"></i> LinkedIn
+                        </a>
+                        <a href="tel:0752996187" class="contact-link-item">
+                            <i data-lucide="phone"></i> 0752996187
+                        </a>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Send Transmission</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-socials"></div>
+        <p>&copy; 2026 Christian Oersted Dominic Jeeva. All rights reserved.</p>
+    </footer>
+
+    <!-- Profile Fullscreen Modal -->
+    <div id="profile-modal" class="image-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="assets/profile.png" alt="Christian Oersted Full">
+        </div>
+    </div>
+
+    <script shadow>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some dynamic star movement
+        const starsContainer = document.querySelector('.stars-container');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Network Effect Script
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxPoints = 60;
+        const connectionDistance = 150;
+
+        function resize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+
+        class Point {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+
+        function initNetwork() {
+            resize();
+            points = [];
+            for (let i = 0; i < maxPoints; i++) points.push(new Point());
+        }
+
+        function animateNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < points.length; i++) {
+                let p1 = points[i];
+                p1.update();
+                ctx.beginPath();
+                ctx.arc(p1.x, p1.y, 1, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fill();
+
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                    if (dist < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        let opacity = 1 - dist / connectionDistance;
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${opacity * 0.2})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateNetwork);
+        }
+
+        window.addEventListener('resize', resize);
+        initNetwork();
+        animateNetwork();
+
+        // Parallax effect for floating orb
+        window.addEventListener('mousemove', (e) => {
+            const orb = document.querySelector('.floating-orb');
+            const x = (window.innerWidth / 2 - e.pageX) / 25;
+            const y = (window.innerHeight / 2 - e.pageY) / 25;
+            orb.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Profile Modal Logic
+        const profileContainer = document.querySelector('.profile-container');
+        const modal = document.getElementById('profile-modal');
+        const closeBtn = document.querySelector('.close-modal');
+
+        profileContainer.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop scrolling
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Resume scrolling
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+
+</html>
