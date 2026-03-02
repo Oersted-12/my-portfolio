@@ -1034,6 +1034,13 @@ footer p {
     background: #02010a;
 }
 
+@media (max-width: 768px) {
+    .project-detail-hero {
+        height: 40vh;
+        /* Reduced height on mobile */
+    }
+}
+
 .hero-image-container {
     position: absolute;
     top: 0;
@@ -1048,6 +1055,15 @@ footer p {
     height: 100%;
     object-fit: cover;
     opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .hero-image-container img {
+        object-fit: contain;
+        /* Show the full image on mobile */
+        background: #02010a;
+        /* Ensure the background stays dark */
+    }
 }
 
 .hero-overlay {
