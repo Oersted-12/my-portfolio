@@ -988,6 +988,7 @@ footer p {
     .contact-links {
         flex-direction: column;
         align-items: stretch;
+        gap: 1rem;
     }
 
     .contact-link-item {
@@ -1036,8 +1037,7 @@ footer p {
 
 @media (max-width: 768px) {
     .project-detail-hero {
-        height: 40vh;
-        /* Reduced height on mobile */
+        height: 35vh;
     }
 }
 
@@ -1059,10 +1059,7 @@ footer p {
 
 @media (max-width: 768px) {
     .hero-image-container img {
-        object-fit: contain;
-        /* Show the full image on mobile */
-        background: #02010a;
-        /* Ensure the background stays dark */
+        object-fit: cover;
     }
 }
 
@@ -1104,6 +1101,15 @@ footer p {
     border-color: var(--accent-cyan);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 242, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
 }
 
 .content-wrap {
