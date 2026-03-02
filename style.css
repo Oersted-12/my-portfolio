@@ -171,7 +171,7 @@ p {
     /* Ensure content starts below navbar and grows down */
     text-align: center;
     position: relative;
-    padding: 150px 10% 60px;
+    padding: 100px 10% 60px;
     /* Stronger top clearance for the navbar */
 }
 
@@ -293,13 +293,8 @@ p {
 .accent {
     position: relative;
     color: #ffffff;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><text x="0" y="7" fill="white" font-family="monospace" font-size="7" font-weight="bold">10</text></svg>') repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: none;
-    filter: drop-shadow(0 0 1px #ffffff) drop-shadow(0 0 3px #ffffff);
     display: inline-block;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(0, 242, 255, 0.2);
 }
 
 .accent::before {
@@ -950,12 +945,13 @@ footer p {
     }
 
     .hero-section h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
         line-height: 1.2;
+        white-space: nowrap;
     }
 
     .glitch-text {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .accent {
