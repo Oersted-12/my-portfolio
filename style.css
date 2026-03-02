@@ -121,16 +121,25 @@ p {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.nav-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+
 
 .nav-links {
     display: flex;
@@ -227,6 +236,13 @@ p {
 
 .profile-container:hover {
     transform: scale(1.05) translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        width: 140px;
+        height: 140px;
+    }
 }
 
 .profile-img {
@@ -555,6 +571,13 @@ p {
     border-top: 1px solid var(--glass-border);
 }
 
+@media (max-width: 768px) {
+    .bio-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
 .bio-meta span {
     display: flex;
     align-items: center;
@@ -857,8 +880,69 @@ footer p {
         padding: 1rem 5%;
     }
 
+    .mobile-menu-btn {
+        display: block;
+    }
+
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(2, 1, 10, 0.95);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 1500;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.4s ease forwards;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Staggered animation for nav items */
+    .nav-links.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links.active li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .nav-links.active li:nth-child(6) {
+        transition-delay: 0.6s;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
     }
 
     .section {
@@ -867,6 +951,7 @@ footer p {
 
     .hero-section h1 {
         font-size: 2.2rem;
+        line-height: 1.2;
     }
 
     .glitch-text {
@@ -878,25 +963,29 @@ footer p {
     }
 
     .hero-content {
-        padding-top: 2rem;
+        padding-top: 1rem;
     }
 
     .tagline {
         font-size: 1rem;
         padding: 0 1rem;
+        margin-bottom: 2rem;
     }
 
     .welcome-text {
-        font-size: 0.9rem;
-        letter-spacing: 0.3rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.2rem;
+        margin-bottom: 1.5rem;
     }
 
     .glass-card {
         padding: 1.5rem;
+        border-radius: 24px;
     }
 
     .detail-h2 {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 1.5rem;
         word-wrap: break-word;
     }
 
@@ -911,6 +1000,7 @@ footer p {
 
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .cta-buttons {
@@ -918,11 +1008,22 @@ footer p {
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
+        gap: 1rem;
     }
 
     .btn {
         width: 100%;
         text-align: center;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .thank-you-card h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .thank-you-card i {
+        width: 40px !important;
+        height: 40px !important;
     }
 }
 

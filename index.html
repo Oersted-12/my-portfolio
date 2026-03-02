@@ -21,14 +21,19 @@
     <div class="stars-container"></div>
 
     <nav id="navbar">
-
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <button class="mobile-menu-btn" id="menu-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main>
@@ -175,6 +180,80 @@
             </div>
         </section>
 
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2 class="section-title">Certifications & Achievements</h2>
+                <div class="projects-grid">
+                    <!-- Sports -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/sport.webp" alt="Sports" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Athletics & Sports</span>
+                            <h3>Sports</h3>
+                            <p>Recognition and achievements in various sporting events and competitions.</p>
+                            <a href="sports-certificates.html" class="project-link">View Certificates <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- IT -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/Information_Technology.avif" alt="Information Technology"
+                                class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Technical</span>
+                            <h3>Information Technology</h3>
+                            <p>Professional certifications and technical achievements in the field of IT.</p>
+                            <a href="it-certificates.html" class="project-link">View Certificates <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Language Competition -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/Language.webp" alt="Language Competition" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Competition</span>
+                            <h3>Language Competition</h3>
+                            <p>Awards and certificates from language-based competitions and events.</p>
+                            <a href="language-competition-certificates.html" class="project-link">View Certificates <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Innovation -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/innovation.jpeg" alt="Innovation" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">Creativity</span>
+                            <h3>Innovation</h3>
+                            <p>Certificates recognizing innovative projects and creative problem-solving.</p>
+                            <a href="innovation-certificates.html" class="project-link">View Certificates <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- English -->
+                    <div class="project-card glass-card">
+                        <div class="project-img-placeholder">
+                            <img src="assets/Language_Competition.jpg" alt="English" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-tag">English</span>
+                            <h3>English</h3>
+                            <p>Academic achievements in English, including IEMS and Diploma in English.</p>
+                            <a href="english-certificates.html" class="project-link">View Certificates <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="section">
             <div class="container">
                 <div class="glass-card contact-card">
@@ -205,6 +284,17 @@
                         <button type="submit" class="btn primary">Send Transmission</button>
                     </form>
                 </div>
+
+                <!-- Thank You Card -->
+                <div class="glass-card thank-you-card" style="margin-top: 3rem; text-align: center;">
+                    <i data-lucide="handshake"
+                        style="width: 48px; height: 48px; color: var(--accent-purple); margin-bottom: 1.5rem;"></i>
+                    <h2 style="margin-bottom: 1.5rem; color: var(--accent-cyan); font-size: 2.2rem;">Thank You!</h2>
+                    <p
+                        style="max-width: 700px; margin: 0 auto; color: var(--text-dim); font-size: 1.1rem; line-height: 1.8; text-align: center;">
+                        I appreciate you taking the time to explore my work.
+                    </p>
+                </div>
             </div>
         </section>
     </main>
@@ -226,8 +316,40 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.contains('active');
+
+            // Toggle icon between menu and x
+            if (isActive) {
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+
+                const targetId = link.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Smooth scroll for cta buttons
+        document.querySelectorAll('.cta-buttons a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
